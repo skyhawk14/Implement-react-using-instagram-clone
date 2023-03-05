@@ -1,0 +1,25 @@
+.signupWrapper {
+  width: 100vw;
+  height: 100vh;
+}
+.signupCard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardHeader {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.typography {
+  text-align: center;
+}
+
+.alreadyAccountLink {
+  width: 100%;
+  margin-top: 2rem;
+}
