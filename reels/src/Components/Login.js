@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
@@ -8,13 +8,17 @@ import "./Login.css";
 import Alert from "@mui/material/Alert";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import image1 from "../assets/image1.png";
 import { AuthContext } from "../Context/AuthContext";
 
 export default function Login() {
   const store = useContext(AuthContext);
-  console.log(store);
+  const [email, setEmail] = useState("mani@gmail.com");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const navigate = useNavigate();
   return (
     <div className="loginWrapper">
       <div className="imgCard">
@@ -26,11 +30,7 @@ export default function Login() {
         <Card sx={{ maxWidth: 345 }}>
           <CardHeader title="Instagram" className="cardHeader" />
           <CardContent>
-            {true && (
-              <Alert severity="error">
-                This is an error alert — check it out!
-              </Alert>
-            )}
+            {error != "" && <Alert severity="error">{error}</Alert>}
             <TextField
               id="outlined-basic"
               label="Email"
@@ -38,6 +38,8 @@ export default function Login() {
               fullWidth={true}
               margin="dense"
               size="small"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               id="outlined-basic"
@@ -46,6 +48,8 @@ export default function Login() {
               fullWidth={true}
               margin="dense"
               size="small"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <div style={{ textAlign: "center" }}>
               <Link to="/forget" style={{ textDecoration: "none" }}>
@@ -60,6 +64,18 @@ export default function Login() {
               color="primary"
               fullWidth={true}
               margin="dense"
+              onClick={async () => {
+                try {
+                  let response = await store.login(email, password);
+                  console.log(response);
+                  navigate("/");
+                } catch (err) {
+                  setError(err.toString());
+                  setTimeout(() => {
+                    setError("");
+                  }, 2000);
+                }
+              }}
             >
               Log in
             </Button>

@@ -7,7 +7,14 @@ import {
 } from "react-router-dom";
 import Login from "./Components/Login";
 import { AuthProvider } from "./Context/AuthContext";
+import Feed from "./Components/Feed";
+import NotFound from "./Components/NotFound";
+import PrivateRoute from "./Components/PrivateRoute";
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <PrivateRoute component={Feed} />,
+  },
   {
     path: "/signup",
     element: <Signup />,
@@ -15,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 

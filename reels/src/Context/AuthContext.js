@@ -3,7 +3,7 @@ import { auth } from "../firebase";
 export const AuthContext = React.createContext();
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = React.useState();
+  const [user, setUser] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
 
   function signup(email, password) {
