@@ -1,0 +1,60 @@
+.loginWrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+.loginCard {
+  width: 35vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardHeader {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.typography {
+  text-align: center;
+}
+
+.alreadyAccountLink {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.imgCard {
+  width: 440px;
+  height: 610px;
+  background: url("https://static.cdninstagram.com/images/instagram/xig/homepage/phones/home-phones-2x.png?__makehaste_cache_breaker=73SVAexZgBW");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  margin-top: 100px;
+  position: relative;
+}
+.imgCard .card {
+  right: 49px;
+  position: absolute;
+  height: 524px;
+  width: 250px;
+  bottom: 62px;
+}
+
+.imgCard .overlayImage {
+  height: inherit;
+  width: inherit;
+}
+@media only screen and (max-width: 875px) {
+  .imgCard {
+    display: none;
+  }
+  .loginCard {
+    width: 50vw;
+  }
+}
