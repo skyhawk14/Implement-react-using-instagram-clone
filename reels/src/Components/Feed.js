@@ -1,13 +1,16 @@
 import { useContext } from "react";
 import { AuthContext } from "../Context/AuthContext";
+import CircularStatic from "./CircularProgressWithLabel";
 import UploadFile from "./Uploadfile";
 
 function Feed() {
   const { logout } = useContext(AuthContext);
+
   return (
     <h1>
-      Welcome to feed <button onClick={logout}>Log out</button>
-      <UploadFile />
+      Click here to <button onClick={logout}>Log out</button>
+      {/* <UploadFile /> */}
+      <CircularStatic value={0} />
     </h1>
   );
 }
